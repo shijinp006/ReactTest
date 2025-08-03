@@ -17,6 +17,15 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const toggleSidebar = () => setSidebarOpen((prev) => !prev);
+  const closeSidebar = () => {
+    if (window.innerWidth < 640) setSidebarOpen(false);
+  };
+
+  const menuItems = [
+    { name: "Dashboard", link: "/" },
+    { name: "Contact", link: "/contact" },
+    { name: "About", link: "/about" },
+  ];
 
   return (
     <div
@@ -26,7 +35,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       {/* Header */}
       <Header />
 
-      {/* Mobile Hamburger for Theme2 */}
+      {/* Mobile Hamburger Menu (Only for Theme2) */}
       {isTheme2 && (
         <div className="sm:hidden flex justify-start px-4 mt-30">
           <button
@@ -39,7 +48,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       )}
 
       <div className={`flex ${isTheme2 ? "flex-row" : "flex-col"} mt-4 sm:mt-0`}>
-        {/* Sidebar for Theme2 */}
+        {/* Sidebar (Theme2 Only) */}
         {isTheme2 && (
           <aside
             className={`${
@@ -48,21 +57,17 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           >
             <h3 className="text-lg font-semibold mb-4">Sidebar Menu</h3>
             <ul className="space-y-2">
-              <li>
-                <Link to="/" className="hover:underline block">
-                  Dashboard
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="hover:underline block">
-                  Contact
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="hover:underline block">
-                  About
-                </Link>
-              </li>
+              {menuItems.map((item) => (
+                <li key={item.name}>
+                  <Link
+                    to={item.link}
+                    onClick={closeSidebar}
+                    className="hover:underline block"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </aside>
         )}
