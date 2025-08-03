@@ -1,9 +1,8 @@
-import React, {
+import  {
   createContext,
   useContext,
   useState,
   useEffect,
-  ReactNode,
 } from 'react';
 
 export type ThemeName = 'theme1' | 'theme2' | 'theme3';
