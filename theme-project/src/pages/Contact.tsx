@@ -1,4 +1,3 @@
-// src/pages/Contact.tsx
 import React from "react";
 import { useTheme } from "../context/ThemeContext";
 import { motion } from "framer-motion";
@@ -24,44 +23,99 @@ const Contact: React.FC = () => {
           backgroundColor: cardBg,
           boxShadow: currentTheme.card.boxShadow,
           borderRadius: currentTheme.card.borderRadius,
-          color: textColor,
         }}
       >
         <h2
-          className="text-2xl sm:text-3xl font-heading mb-4 sm:mb-6"
+          className="text-2xl sm:text-3xl font-heading mb-6"
           style={{ color: currentTheme.colors.primary }}
         >
           Contact Us
         </h2>
 
-        <p className="mb-4" style={{ color: textColor }}>
-          Have questions, feedback, or need assistance? Feel free to reach out
-          to us! Our support team is always ready to help you.
+        <p className="mb-6 text-base leading-relaxed" style={{ color: textColor }}>
+          Have questions, feedback, or need assistance? Fill out the form below
+          or reach us directly at our email or phone.
         </p>
 
-        <p className="mb-3" style={{ color: textColor }}>
-          <strong>Email:</strong> hr@hipster-inc.com
-        </p>
-        <p className="mb-3" style={{ color: textColor }}>
-          <strong>Phone:</strong> +6582314107
-        </p>
-        <p className="mb-6" style={{ color: textColor }}>
-          <strong>Address:</strong> #01-04, 75 Ayer Rajah Crescent, 139953, Singapore
-        </p>
+        <form className="space-y-4">
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium mb-1">
+              Name
+            </label>
+            <input
+              id="name"
+              type="text"
+              placeholder="Your Name"
+              className="w-full p-3 border rounded-md focus:outline-none focus:ring"
+              style={{
+                backgroundColor: backgroundColor,
+                borderColor,
+                color: textColor,
+              }}
+            />
+          </div>
 
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          style={{
-            backgroundColor: currentTheme.colors.primary,
-            color: "#fff",
-            padding: `${currentTheme.button.paddingY} ${currentTheme.button.paddingX}`,
-            borderRadius: currentTheme.button.borderRadius,
-          }}
-          className="font-semibold transition duration-300 cursor-pointer"
-        >
-          Send Message
-        </motion.button>
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium mb-1">
+              Email
+            </label>
+            <input
+              id="email"
+              type="email"
+              placeholder="you@example.com"
+              className="w-full p-3 border rounded-md focus:outline-none focus:ring"
+              style={{
+                backgroundColor: backgroundColor,
+                borderColor,
+                color: textColor,
+              }}
+            />
+          </div>
+
+          <div>
+            <label htmlFor="message" className="block text-sm font-medium mb-1">
+              Message
+            </label>
+            <textarea
+              id="message"
+              rows={4}
+              placeholder="Write your message..."
+              className="w-full p-3 border rounded-md focus:outline-none focus:ring resize-none"
+              style={{
+                backgroundColor: backgroundColor,
+                borderColor,
+                color: textColor,
+              }}
+            ></textarea>
+          </div>
+
+          <motion.button
+            type="submit"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="mt-4 font-semibold transition duration-300 cursor-pointer w-full"
+            style={{
+              backgroundColor: currentTheme.colors.primary,
+              color: "#fff",
+              padding: `${currentTheme.button.paddingY} ${currentTheme.button.paddingX}`,
+              borderRadius: currentTheme.button.borderRadius,
+            }}
+          >
+            Send Message
+          </motion.button>
+        </form>
+
+        <div className="mt-8 text-sm space-y-2" style={{ color: textColor }}>
+          <p>
+            <strong>Email:</strong> zee@-inc.com
+          </p>
+          <p>
+            <strong>Phone:</strong> +9786544534
+          </p>
+          <p>
+            <strong>Address:</strong> #India
+          </p>
+        </div>
       </div>
     </motion.div>
   );
